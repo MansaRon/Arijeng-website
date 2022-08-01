@@ -1,0 +1,16 @@
+.btn-arijeng {
+  background-color: #fb5d02;
+  color: white;
+  border-radius: 1.5em;
+  position: relative;
+  width: auto;
+}
+
+.input-arijeng {
+  border-radius: 0.6em;
+}
+
+.text-arijeng {
+  color: #fb5d02;
+  cursor: pointer;
+}

@@ -1,0 +1,24 @@
+header {
+  clear: both;
+  background: #f86901;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 879;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s;
+  background-color: #fb5d02 !important;
+}
+
+.logoColumn {
+  display: table;
+  position: absolute;
+  height: 70px;
+}
+
+/* .navbar {
+  background-color: #fb5d02 !important;
+} */
+
+/*  <color name="arijeng_orange_1">#f86901</color>
+    <color name="arijeng_orange_2">#fb5d02</color> */
