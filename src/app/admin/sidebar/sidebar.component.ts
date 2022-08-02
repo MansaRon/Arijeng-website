@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { navbarData } from './nav-data';
+import { SideNavToggle } from '../main-view/main-view.component';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,12 +9,25 @@ import { navbarData } from './nav-data';
 })
 export class SidebarComponent implements OnInit {
 
+  @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
   collapsed = false;
   navData = navbarData;
+  screenWidth = 0;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  public toggleNavBar(): void {
+    this.collapsed = !this.collapsed;
+    this.onToggleSideNav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth});
+  }
+
+  public closeNavBar(): void {
+    this.collapsed = false;
+    this.onToggleSideNav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth});
+  }
+
 }
+
