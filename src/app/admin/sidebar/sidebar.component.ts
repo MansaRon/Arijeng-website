@@ -10,14 +10,13 @@ import { SideNavToggle } from '../main-view/main-view.component';
 export class SidebarComponent implements OnInit {
 
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
-  collapsed = false;
+  collapsed = true;
   navData = navbarData;
   screenWidth = 0;
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   public toggleNavBar(): void {
     this.collapsed = !this.collapsed;

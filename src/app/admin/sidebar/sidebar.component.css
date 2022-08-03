@@ -4,8 +4,8 @@
     position: inherit;
     z-index: 1;
     top: 0;
-    /* width: 5rem; */
-    width: 16.5625rem;
+    width: 5rem;
+    /* width: 16.5625rem; */
     height: 87.4vh;
     box-shadow: 0.063rem 0 1.25rem 0 #8690a3;
 }
@@ -13,11 +13,11 @@
 .logo-container {
     display: flex;
     align-items: center;
-    padding: 0.938rem 0.938rem 0.938rem;
+    padding: 0.938rem 0.938rem 0 0.938rem;
     width: 100%;
 }
 
-button.logo {
+.logo {
     background: #fff;
     text-align: center;
     width: 3rem;
@@ -37,7 +37,7 @@ button.logo {
     color: #fff;
 }
 
-button.btn-close {
+.btn-close {
     margin-left: auto;
     cursor: pointer;
     width: 2rem;
@@ -47,7 +47,7 @@ button.btn-close {
     border: none;
 }
 
-i.fa-times {
+.fa-times {
     color: white;
     font-size: 24px;
 }
@@ -56,7 +56,7 @@ i.fa-times {
     width: 16.5625rem;
 }
 
-ul.sidenav-nav {
+.sidenav-nav {
     list-style: none;
     padding: 0.938rem;
     margin: 0;
@@ -67,12 +67,12 @@ ul.sidenav-nav {
     cursor: pointer;
 }
 
-li.sidenav-nav-item {
+.sidenav-nav-item {
     width: 100%;
     margin-bottom: 0.625rem;
 }
 
-a.sidenav-nav-link {
+.sidenav-nav-link {
     display: flex;
     align-items: center;
     height: 3rem;
@@ -82,7 +82,7 @@ a.sidenav-nav-link {
     border-radius: 0.625rem;
 }
 
-i.sidenav-link-icon {
+.sidenav-link-icon {
     font-size: 22px;
     width: 2rem;
     min-width: 2rem;
@@ -90,7 +90,7 @@ i.sidenav-link-icon {
     text-align: center;
 }
 
-span.sivenav-link-text {
+.sivenav-link-text {
     margin-left: 1.5rem;
 }
 
