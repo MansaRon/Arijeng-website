@@ -10,9 +10,7 @@ import { SideNavToggle } from '../main-view/main-view.component';
 export class SidebarComponent implements OnInit {
 
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
-  collapsed = true;
-  navData = navbarData;
-  screenWidth = 0;
+  collapsed = true; navData = navbarData; screenWidth = 0;
 
   constructor() { }
 

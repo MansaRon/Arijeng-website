@@ -1,3 +1,20 @@
 .removeSpace {
     padding: 0px;
 }
+
+table {
+    width: 100%;
+}
+  
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+  
+td, th {
+    width: 25%;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+}
