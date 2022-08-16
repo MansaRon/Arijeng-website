@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ViewOrderRoutingModule } from './view-order-routing.module';
 import { ViewOrderComponent } from './view-order.component';
+import { MaterialModuleModule } from 'src/material-module/material-module.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { ViewOrderComponent } from './view-order.component';
   ],
   imports: [
     CommonModule,
-    ViewOrderRoutingModule
+    ViewOrderRoutingModule,
+    MaterialModuleModule
   ]
 })
 export class ViewOrderModule { }
