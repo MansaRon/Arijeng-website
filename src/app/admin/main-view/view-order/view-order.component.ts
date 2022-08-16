@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewOrderComponent implements OnInit {
 
+  kotaOrder: any;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.kotaOrder = JSON.parse(localStorage.getItem("kotaOrder") || '');
+    console.log(this.kotaOrder);
   }
 
 }

@@ -4,6 +4,7 @@ import { FormControl } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 
 // const FRUITS: string[] = [
 //   'blueberry','lychee','kiwi','mango', 'peach','lime','pomegranate','pineapple',
@@ -77,7 +78,7 @@ export class MainViewComponent implements OnInit, AfterViewInit {
   isSideNavCollapsed = false;
   screenWidth = 0;
 
-  constructor(private _liveAnnouncer: LiveAnnouncer) { 
+  constructor(private _liveAnnouncer: LiveAnnouncer, private router: Router) { 
     // Create 100 users
     // const users = Array.from({length: 100}, (_, k) => this.createNewUser(k + 1));
     // Assign the data to the data source for the table to render
@@ -117,6 +118,8 @@ export class MainViewComponent implements OnInit, AfterViewInit {
 
   FunctionEdit(code: any) {
     console.log(code);
+    localStorage.setItem("kotaOrder", JSON.stringify(code));
+    this.router.navigateByUrl('/view-order')
   }
 
   /** Builds and returns a new User. */
