@@ -1,4 +1,5 @@
 <div class="container-fluid">
+
     <div class="row mt-4">
         <div class="col-md-3">
             <button mat-raised-button color="primary" (click)="goBackHome()">
@@ -7,96 +8,21 @@
             </button>
         </div>
     </div>
-    <div class="row">
+
+    <div class="row mt-4">
         <div class="col-md-12">
-            <div class="card-body">
-                <div class="row">
-                    <h4>Pick Up Details</h4>
-                    <div class="border_grey_line"></div>
-                </div>
-
-                <div class="row">
-                    <div class="card-body">
-                        <div class="row g-2 mt-4 justify-content-start">
-                            <div class="col-4">
-                                <div class="mb-3">
-                                    <label class="form-text labelText">Name</label>
-                                    <input class="form-control input-radius adminInput" type="text"
-                                        [(ngModel)]="pickUpName" readonly />
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="mb-3">
-                                    <label class="form-text labelText">Email Address</label>
-                                    <input class="form-control input-radius adminInput" type="text"
-                                        [(ngModel)]="pickUpEmail" readonly />
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="mb-3">
-                                    <label class="form-text labelText">Pick Up Address</label>
-                                    <input class="form-control input-radius adminInput" type="text"
-                                        [(ngModel)]="pickUpAddress" readonly />
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="mb-3">
-                                    <label class="form-text labelText">Phone Number</label>
-                                    <input class="form-control input-radius adminInput" type="text"
-                                        [(ngModel)]="pickUpNumber" readonly />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card-body">
-                <div class="row">
-                    <h4>Drop Off Details</h4>
-                    <div class="border_grey_line"></div>
-                </div>
-
-                <div class="row">
-                    <div class="card-body">
-                        <div class="row g-2 mt-4 justify-content-start">
-                            <div class="col-4">
-                                <div class="mb-3">
-                                    <label class="form-text labelText">Name</label>
-                                    <input class="form-control input-radius adminInput" type="text"
-                                        [(ngModel)]="dropOffName" readonly />
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="mb-3">
-                                    <label class="form-text labelText">Drop Off Address</label>
-                                    <input class="form-control input-radius adminInput"
-                                        style="word-wrap: break-word; word-break: break-all; font-size: smaller;"
-                                        type="text" [(ngModel)]="dropOffAddress" readonly />
-                                </div>
-                            </div>
-
-                            <div class="col-3">
-                                <div class="mb-3">
-                                    <label class="form-text labelText">Phone Number</label>
-                                    <input class="form-control input-radius adminInput" type="text"
-                                        [(ngModel)]="dropOffNumber" readonly />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card-body">
-                <div class="row d-flex justify-content-end">
-                    <div class="col-md-12">
-                        <button mat-raised-button color="primary">Order Placed</button>
-                        <button mat-raised-button color="accent">Not Placed</button>
-                        <button mat-raised-button color="warn">Ready For Collection</button>
-                    </div>
-                </div>
-            </div>
+            <mat-card>
+                <mat-card-title>Order Details:</mat-card-title>
+                <mat-card-subtitle>Diamond Kota</mat-card-subtitle>
+                <mat-card-content>Chaka/Archaar, Lettuce, Tomato, Polony, Chips, Cheese, Egg, Russian, Patty</mat-card-content>
+                <mat-card-content>Quantity: 1</mat-card-content>
+                <mat-card-content>Price: R45</mat-card-content>
+                <mat-card-actions align="end">
+                    <button mat-raised-button color="primary">Order Placed</button>
+                    <button mat-raised-button color="accent">Not Placed</button>
+                    <button mat-raised-button color="warn">Ready For Collection</button>
+                </mat-card-actions>
+            </mat-card>
         </div>
     </div>
 </div>
