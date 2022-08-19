@@ -8,7 +8,8 @@ const routes: Routes = [
   { path: 'sign-up', loadChildren: () => import('./home/sign-up/sign-up.module').then(m => m.SignUpModule) },
   { path: 'reset-password', loadChildren: () => import('./home/reset-password/reset-password.module').then(m => m.ResetPasswordModule) },
   { path: 'sidebar', loadChildren: () => import('./admin/sidebar/sidebar.module').then(m => m.SidebarModule) },
-  { path: 'main-view', loadChildren: () => import('./admin/main-view/main-view.module').then(m => m.MainViewModule) }
+  { path: 'main-view', loadChildren: () => import('./admin/main-view/main-view.module').then(m => m.MainViewModule) },
+  { path: 'otp', loadChildren: () => import('./home/opt/opt.module').then(m => m.OptModule) }
 ];
 
 @NgModule({

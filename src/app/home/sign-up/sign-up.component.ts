@@ -22,15 +22,10 @@ export class SignUpComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  login(): void {
-    this.router.navigateByUrl('/');
-  }
+  login(): void {this.router.navigateByUrl('/');}
 
-  register(): void {
-    this.router.navigateByUrl('/');
-  }
+  register(): void {this.router.navigateByUrl('/otp');}
 
 }
