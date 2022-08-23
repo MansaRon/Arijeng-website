@@ -12,7 +12,7 @@
         </div>
 
         <div class="row">
-          <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()" autocomplete="on">
+          <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()" autocomplete="off">
             <div class="col-md-6 offset-md-3">
               <div class="card-body">
                 <div class="justify-content-center">
@@ -74,6 +74,7 @@
                     required 
                     minlength="10" 
                     maxlength="10"
+                    (keypress)="keyPress($event)"
                     [ngClass]="{ 'is-invalid': submitted && f['mobileNum'].errors }"/>
                     <div *ngIf="submitted && f['mobileNum'].errors" class="invalid-feedback">
                       <div *ngIf="f['mobileNum'].errors['required']">Phone Number is required</div>
