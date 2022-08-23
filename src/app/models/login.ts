@@ -1,5 +1,5 @@
 export interface Login {
     phone: string,
-    pwd: [ string ],
+    pwd: string,
     token: string
 }

@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModuleModule } from 'src/material-module/material-module.module';
+import { Registration } from './services/registrationServices/registration';
 
 @NgModule({
   declarations: [

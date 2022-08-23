@@ -5,7 +5,7 @@ import { Login } from "src/app/models/login";
 import { Register } from "src/app/models/register";
 import { Endpoints } from "../urlServices/endpoints";
 
-@Injectable()
+@Injectable({providedIn: 'any'})
 export class Registration {
     constructor(private endpoints: Endpoints, private http: HttpClient) {}
 

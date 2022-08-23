@@ -1,12 +1,11 @@
-import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
-@Injectable()
+@Injectable({providedIn: 'any'})
 export class Endpoints {
 
     private url: string = 'https://arijeng-app.herokuapp.com/api/v1/';
 
-    constructor(private http: HttpClient) {}
+    constructor() {}
 
     public arijengurl(): string {
         return this.url;

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Register } from 'src/app/models/register';
+import { Registration } from 'src/app/services/registrationServices/registration';
 
 @Component({
   selector: 'app-opt',
@@ -10,10 +12,13 @@ import { Router } from '@angular/router';
 export class OptComponent implements OnInit {
 
   public profileForm!: FormGroup;
+  public signUpObject!: Register;
 
-  constructor(private router: Router, private route: Router, private formgroup: FormBuilder) { }
+  constructor(private register: Registration, private router: Router, private route: Router, private formgroup: FormBuilder) { }
 
   ngOnInit(): void {
+    this.signUpObject = JSON.parse(window.localStorage.getItem("signUpObject") || '');
+    console.log(this.signUpObject);
     this.profileForm = this.formgroup.group({
       otp: ['', Validators.required]
     });
@@ -28,6 +33,16 @@ export class OptComponent implements OnInit {
   }
 
   public onSubmitOTPHandler() {
+
+    this.register.confirmOTP(this.signUpObject.phone).subscribe({
+      next: (opt: Response) => {
+        console.log(opt);
+      },
+      error: (error) => {
+        console.log(error);
+      }, 
+      complete() {},
+    })
 
     // if (this.otpForm.value.otp === "") {
     //   this.isValidated = "OTP Field Cannot Be Empty.";

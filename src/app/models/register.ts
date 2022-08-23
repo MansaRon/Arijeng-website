@@ -3,6 +3,6 @@ export interface Register {
     lastName: string,
     email: string,
     phone: string,
-    code: string,
-    pwd: [ string ]
+    // code: string,
+    pwd: string 
 }
