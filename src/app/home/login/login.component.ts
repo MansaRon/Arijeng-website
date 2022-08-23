@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Registration } from 'src/app/services/registrationServices/registration';
+import { Login } from "src/app/models/login";
 
 @Component({
   selector: 'app-login',
@@ -45,8 +46,8 @@ export class LoginComponent implements OnInit {
     }
 
     this.login.loginUser(loginBody).subscribe({
-      next: (response: Response) => {
-        console.log(response.json());
+      next: (response: Login) => {
+        console.log(response);
       },
       error: (error: Error) => {
         console.log(error);

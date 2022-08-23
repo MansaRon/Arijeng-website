@@ -12,16 +12,27 @@
                 </div>
 
                 <div class="row gy-3">
-                    <form #f="ngForm" [formGroup]="profileForm" (ngSubmit)="onSubmitOTPHandler()" autocomplete="off">
+                    <form role="form" [formGroup]="otpForm" (ngSubmit)="onSubmitOTPHandler()" autocomplete="off">
                         <div class="col-md-6 offset-md-3">
                             <div class="card-body">
                                 <div class="justify-content-center">
 
                                     <div class="mb-3">
                                         <label>OTP</label>
-                                        <input class="form-control input-arijeng" type="text" name="userPassword"
-                                        (keypress)="keyPress($event)" maxlength="4" id="userpassword" formControlName="otp" required>
-                                        <!-- <p class="fw-light fs-6 mt-3 text-danger text-center">{{ passwordValidate }}</p> -->
+                                        <input type="text" 
+                                        id="otp" 
+                                        formControlName="otp" 
+                                        class="form-control" 
+                                        required 
+                                        minlength="10" 
+                                        maxlength="10"
+                                        (keypress)="keyPress($event)"
+                                        [ngClass]="{ 'is-invalid': submitted && f['otp'].errors }"/>
+                                        <div *ngIf="submitted && f['otp'].errors" class="invalid-feedback">
+                                          <div *ngIf="f['otp'].errors['required']">OTP is required</div>
+                                          <div *ngIf="f['otp'].errors['minlength']">OTP must be 10 digits</div>
+                                          <div *ngIf="f['otp'].errors['maxlength']">OTP must be 10 digits</div>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -30,7 +41,6 @@
                                         <div class="d-grid gap-2 col-6 mx-auto">
                                             <button class="btn btn-arijeng" type="submit">Confirm</button>
                                         </div>
-                                        <!-- <p class="text-danger text-center mt-2">{{ loginMsg }}</p> -->
                                     </div>
                                 </div>
                             </div>

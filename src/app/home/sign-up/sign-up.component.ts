@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Register } from "src/app/models/register";
 import { Registration } from 'src/app/services/registrationServices/registration';
 import { CustomvalidationService } from 'src/app/services/validationServices/customvalidation.service';
 
@@ -71,7 +72,7 @@ export class SignUpComponent implements OnInit {
     //alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
 
     this.register.registerUser(registerBody).subscribe({
-      next: (registerResponse: Registration) => {
+      next: (registerResponse: Register) => {
         console.log(registerResponse);
         this.router.navigateByUrl('/otp');
         console.log(this.registerForm.value);

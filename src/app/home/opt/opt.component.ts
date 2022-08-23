@@ -11,16 +11,18 @@ import { Registration } from 'src/app/services/registrationServices/registration
 })
 export class OptComponent implements OnInit {
 
-  public profileForm!: FormGroup;
+  otpForm: FormGroup = new FormGroup({
+    otp: new FormControl('')
+  });
+  submitted = false;
   public signUpObject!: Register;
 
-  constructor(private register: Registration, private router: Router, private route: Router, private formgroup: FormBuilder) { }
+  constructor(private register: Registration, private router: Router, private route: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.signUpObject = JSON.parse(window.localStorage.getItem("signUpObject") || '');
-    console.log(this.signUpObject);
-    this.profileForm = this.formgroup.group({
-      otp: ['', Validators.required]
+    this.otpForm = this.formBuilder.group({
+      otp: ['', [Validators.required, Validators.maxLength(4), Validators.minLength(4)]]
     });
   }
 
@@ -34,6 +36,9 @@ export class OptComponent implements OnInit {
 
   public onSubmitOTPHandler() {
 
+    this.submitted = true;
+    if (this.otpForm.invalid) { return; }
+
     this.register.confirmOTP(this.signUpObject.phone).subscribe({
       next: (opt: Response) => {
         console.log(opt);
@@ -41,35 +46,11 @@ export class OptComponent implements OnInit {
       error: (error) => {
         console.log(error);
       }, 
-      complete() {},
+      complete:() => { this.router.navigateByUrl('/'); localStorage.removeItem("signUpObject"); }
     })
 
-    // if (this.otpForm.value.otp === "") {
-    //   this.isValidated = "OTP Field Cannot Be Empty.";
-    //   this.isSuccess = false;
-    // }
-    // else if (this.otpForm.value.otp.length !== 4) {
-    //   this.isValidated = "An OTP Must Contain 4 Digits.";
-    //   this.isSuccess = false;
-    // }
-    // else {
-    //   this.services.verifyUserMobileForOtp(this.userRegistrationData.phone, this.otpForm.value.otp)
-    //     .subscribe((otpVerified: any) => {
-
-    //       if (otpVerified.status === "AWAITING_CONFIRMATION") {
-    //         this.isValidated = "Invalid OTP Provided.";
-    //         this.isSuccess = false;
-    //       } else if (otpVerified.status === "ACTIVE") {
-    this.router.navigateByUrl('/');
-    //         localStorage.setItem("user_details", JSON.stringify(otpVerified));
-    //       } else {
-    //         this.isValidated = "";
-    //       }
-    //     }, (errorCaught: HttpErrorResponse) => {
-    //       console.log(errorCaught);
-    //     })
-    // }
-
   }
+
+  get f() { return this.otpForm.controls }
 
 }
