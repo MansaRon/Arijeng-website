@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Registration } from 'src/app/services/registrationServices/registration';
 import { CustomvalidationService } from 'src/app/services/validationServices/customvalidation.service';
@@ -12,37 +12,31 @@ import { CustomvalidationService } from 'src/app/services/validationServices/cus
 })
 export class SignUpComponent implements OnInit {
 
-  // userName: string = '';
-  // userSurname: string = '';
-  // userEmail: string = '';
-  // userMobile: string = '';
-  // userPassword: string = '';
-
-  // userNameValidate: string = '';
-  // userSurnameValidate: string = '';
-  // userEmailValidate: string = '';
-  // userMobileValidate: string = '';
-  // userPasswordValidate: string = '';
-
-  registerForm!: FormGroup;
+  registerForm: FormGroup = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    email: new FormControl(''),
+    mobileNum: new FormControl(''),
+    password: new FormControl(''),
+    confirmPassword: new FormControl(''),
+    acceptTerms: new FormControl(false),
+  });
   submitted = false;
 
   constructor(private register: Registration, private router: Router, private formBuilder: FormBuilder, private match: CustomvalidationService) { }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
-      // title: ['', Validators.required],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      // validates date format yyyy-mm-dd
+      firstName: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
+      lastName: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
       // dob: ['', [Validators.required, Validators.pattern(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/)]],
       email: ['', [Validators.required, Validators.email]],
       mobileNum: ['', Validators.required, Validators.minLength(10), Validators.maxLength(10)],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(6), Validators.minLength(20)]],
       confirmPassword: ['', Validators.required],
       acceptTerms: [false, Validators.requiredTrue]
     }, {
-      validator: this.match.MustMatch('password', 'confirmPassword')
+      validator: this.match.match('password', 'confirmPassword')
     });
   }
 
@@ -68,14 +62,20 @@ export class SignUpComponent implements OnInit {
     // display form values on success
     //alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
 
-    this.register.registerUser(registerBody).subscribe((registerResponse: Registration) => {
-      console.log(registerResponse);
-      console.log(this.registerForm.value);
-      localStorage.setItem("signUpObject", JSON.stringify(registerResponse));
-      this.router.navigateByUrl('/otp');
-    }, (error: HttpErrorResponse) => {
-      console.log(error);
-    })
+    this.register.registerUser(registerBody).subscribe({
+      next: (registerResponse: Registration) => {
+        console.log(registerResponse);
+        this.router.navigateByUrl('/otp');
+        console.log(this.registerForm.value);
+        localStorage.setItem("signUpObject", JSON.stringify(registerResponse));
+      }, 
+      error:(error: HttpErrorResponse) => {
+        console.log(error);
+      }, 
+      complete: () => {
+        this.onReset();
+      },
+    });
 
   }
 
@@ -85,7 +85,5 @@ export class SignUpComponent implements OnInit {
   }
 
   login(): void { this.router.navigateByUrl('/'); }
-
-  //register(): void { this.router.navigateByUrl('/otp'); }
 
 }

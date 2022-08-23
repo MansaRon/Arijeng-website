@@ -19,53 +19,113 @@
 
                   <div class="mb-3">
                     <label>First Name</label>
-                    <input type="text" id="firstName" formControlName="firstName" class="form-control" required />
-                    <!-- <input class="form-control input-arijeng" type="email" name="userName" id="username" [(ngModel)]="userName" required>
-                    <p class="fw-light fs-6 mt-3 text-danger text-center">{{ userNameValidate }}</p> -->
+                    <input type="text" 
+                    id="firstName" 
+                    formControlName="firstName" 
+                    class="form-control" 
+                    required 
+                    [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }" />
+                    <div *ngIf="submitted && f['firstName'].errors" class="invalid-feedback">
+                      <div *ngIf="f['firstName'].errors['required']">First Name is required</div>
+                    </div>
                   </div>
 
                   <div class="mb-3">
                     <label>Last Name</label>
-                    <input type="text" id="lastName" formControlName="lastName" class="form-control" required />
-                    <!-- <input class="form-control input-arijeng" type="text" name="lastName" id="lastName" [(ngModel)]="userSurname" required>
-                    <p class="fw-light fs-6 mt-3 text-danger text-center">{{ userSurnameValidate }}</p> -->
+                    <input type="text" 
+                    id="lastName" 
+                    formControlName="lastName" 
+                    class="form-control" 
+                    required 
+                    [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }" />
+                    <div *ngIf="submitted && f['lastName'].errors" class="invalid-feedback">
+                      <div *ngIf="f['lastName'].errors['required']">
+                        Last Name is required.
+                      </div>
+                      <div *ngIf="f['lastName'].errors['minlength']">
+                        Last Name must be at least 6 characters.
+                      </div>
+                      <div *ngIf="f['lastName'].errors['maxlength']">
+                        Last Name must not exceed 20 characters.
+                      </div>
+                    </div>
                   </div>
 
                   <div class="mb-3">
                     <label>Email Address</label>
-                    <input type="text" id="email" formControlName="email" class="form-control" required />
-                    <!-- <input class="form-control input-arijeng" type="email" name="personEmail" id="personEmail" [(ngModel)]="userEmail" required>
-                    <p class="fw-light fs-6 mt-3 text-danger text-center">{{ userEmailValidate }}</p> -->
+                    <input type="text" 
+                    id="email" 
+                    formControlName="email" 
+                    class="form-control" 
+                    required 
+                    [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"/>
+                    <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                      <div *ngIf="f['email'].errors['required']">Email is required</div>
+                      <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+                    </div>
                   </div>
 
                   <div class="mb-3">
                     <label>Mobile Number</label>
-                    <input type="text" id="mobileNum" formControlName="mobileNum" class="form-control" required minlength="10" maxlength="10"/>
-                    <!-- <input class="form-control input-arijeng" type="email" name="personPhone" id="personPhone" [(ngModel)]="userMobile" required>
-                    <p class="fw-light fs-6 mt-3 text-danger text-center">{{ userMobileValidate }}</p> -->
+                    <input type="text" 
+                    id="mobileNum" 
+                    formControlName="mobileNum" 
+                    class="form-control" 
+                    required 
+                    minlength="10" 
+                    maxlength="10"
+                    [ngClass]="{ 'is-invalid': submitted && f['mobileNum'].errors }"/>
+                    <div *ngIf="submitted && f['mobileNum'].errors" class="invalid-feedback">
+                      <div *ngIf="f['mobileNum'].errors['required']">Phone Number is required</div>
+                      <div *ngIf="f['mobileNum'].errors['mobileNum']">Phone Number is invalid</div>
+                      <div *ngIf="f['mobileNum'].errors['minlength']">Phone Number must 10 digits</div>
+                      <div *ngIf="f['mobileNum'].errors['maxlength']">Phone Number must 10 digits</div>
+                    </div>
                   </div>
 
                   <div class="mb-3">
                     <label>Password</label>
-                    <input type="password" id="password" formControlName="password" class="form-control" required />
-                    <!-- <input class="form-control input-arijeng" type="password" name="personPassword" id="personPassword" [(ngModel)]="userPassword" required>
-                    <p class="fw-light fs-6 mt-3 text-danger text-center">{{ userPasswordValidate }}</p> -->
+                    <input type="password" 
+                    id="password" 
+                    formControlName="password" 
+                    class="form-control" 
+                    required 
+                    [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"/>
+                    <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                      <div *ngIf="f['password'].errors['required']">Password is required</div>
+                      <div *ngIf="f['password'].errors['minlength']">Password must be at least 6 characters</div>
+                      <div *ngIf="f['password'].errors['maxlength']">Username must not exceed 40 characters</div>
+                    </div>
                   </div>
 
                   <div class="mb-3">
                     <label>Confirm Password</label>
-                    <input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-control" required />
-                    <!-- <input class="form-control input-arijeng" type="password" name="personPassword" id="personPassword" [(ngModel)]="userPassword" required>
-                    <p class="fw-light fs-6 mt-3 text-danger text-center">{{ userPasswordValidate }}</p> -->
+                    <input type="password" 
+                    id="confirmPassword" 
+                    formControlName="confirmPassword"
+                    class="form-control" 
+                    required 
+                    [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }"/>
+                    <div *ngIf="submitted && f['confirmPassword'].errors" class="invalid-feedback" >
+                      <div *ngIf="f['confirmPassword'].errors['required']">Confirm Password is required</div>
+                      <div *ngIf="f['confirmPassword'].errors['matching']">Confirm Password does not match</div>
+                    </div>
                   </div>
 
                   <div class="mb-3">
                     <div class="row justify-content-center">
                       <div class="col-md-11">
                         <p>By registering you agree to our Terms and Conditions</p>
+                        <div *ngIf="submitted && f['acceptTerms'].errors" class="invalid-feedback">
+                          <div *ngIf="f['acceptTerms'].errors['required']">Accept Terms is required</div>
+                        </div>
                       </div>
                       <div class="col-md-1">
-                        <input class="form-check-input" formControlName="acceptTerms" type="checkbox" id="flexCheckDefault">
+                        <input class="form-check-input" 
+                          formControlName="acceptTerms" 
+                          type="checkbox" 
+                          id="flexCheckDefault"
+                          [ngClass]="{ 'is-invalid': submitted && f['acceptTerms'].errors }">
                       </div>
                     </div>
                   </div>
