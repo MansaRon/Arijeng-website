@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ResetPassword } from "src/app/models/resetpassword";
 import { Registration } from 'src/app/services/registrationServices/registration';
 import { CustomvalidationService } from 'src/app/services/validationServices/customvalidation.service';
 
@@ -37,6 +38,22 @@ export class ResetPasswordComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (this.resetPasswordForm.invalid) { return; }
+
+    const resetPwdBody = {
+      mobile: this.resetPasswordForm.value.mobileNum,
+      newPwd: this.resetPasswordForm.value.password
+    }
+
+    this.register.resetPassword(resetPwdBody).subscribe({
+      next(resetPwd: ResetPassword) {
+        console.log(resetPwd);
+      },
+      error(err: Error) {
+        console.log(err);
+      },
+      complete:() => { this.router.navigateByUrl('/') },
+    })
+
   }
 
   onReset() {
