@@ -32,7 +32,7 @@ export class SignUpComponent implements OnInit {
       // dob: ['', [Validators.required, Validators.pattern(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/)]],
       email: ['', [Validators.required, Validators.email]],
       mobileNum: ['', Validators.required, Validators.minLength(10), Validators.maxLength(10)],
-      password: ['', [Validators.required, Validators.minLength(6), Validators.minLength(20)]],
+      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
       confirmPassword: ['', Validators.required],
       acceptTerms: [false, Validators.requiredTrue]
     }, {

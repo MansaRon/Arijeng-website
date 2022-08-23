@@ -12,37 +12,54 @@
         </div>
 
         <div class="row gy-3">
-          <form role="form" infoForm="ngForm" autocomplete="off">
+          <form role="form" [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()" autocomplete="off">
             <div class="col-md-6 offset-md-3">
               <div class="card-body">
                 <div class="justify-content-center">
 
                   <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-text labelText">Mobile Number</label>
-                    <input class="form-control input-arijeng" type="email" name="userName" #email="ngModel"
-                      id="username" [(ngModel)]="userEmail" required
-                      pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}">
-                    <p class="fw-light fs-6 mt-3 text-danger text-center">{{ emailValidate }}</p>
+                    <label>Mobile Number</label>
+                    <input type="text" 
+                    id="mobileNum" 
+                    formControlName="mobileNum" 
+                    class="form-control" 
+                    required 
+                    minlength="10" 
+                    maxlength="10"
+                    [ngClass]="{ 'is-invalid': submitted && f['mobileNum'].errors }"/>
+                    <div *ngIf="submitted && f['mobileNum'].errors" class="invalid-feedback">
+                      <div *ngIf="f['mobileNum'].errors['required']">Phone Number is required</div>
+                      <div *ngIf="f['mobileNum'].errors['mobileNum']">Phone Number is invalid</div>
+                      <div *ngIf="f['mobileNum'].errors['minlength']">Phone Number must 10 digits</div>
+                      <div *ngIf="f['mobileNum'].errors['maxlength']">Phone Number must 10 digits</div>
+                    </div>
                   </div>
 
                   <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-text labelText">Password</label>
-                    <input class="form-control input-arijeng" type="password" name="userPassword"
-                      #password="ngModel" id="userpassword" [(ngModel)]="userPassword" required>
-                    <p class="fw-light fs-6 mt-3 text-danger text-center">{{ passwordValidate }}</p>
-                  </div>
-                </div>
-
-                <div class="justify-content-center">
-                  <div class="row gy-2" style="margin-top: 2rem;">
-                    <div class="d-grid gap-2 col-6 mx-auto">
-                      <button class="btn btn-arijeng" type="button" (click)="login()">SIGN IN</button>
+                    <label>Password</label>
+                    <input type="password" 
+                      id="password" 
+                      formControlName="password" 
+                      class="form-control" 
+                      required 
+                      [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"/>
+                    <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                      <div *ngIf="f['password'].errors['required']">Password is required</div>
+                      <div *ngIf="f['password'].errors['minlength']">Password must be at least 6 characters</div>
+                      <div *ngIf="f['password'].errors['maxlength']">Username must not exceed 40 characters</div>
                     </div>
-                    <p class="text-danger text-center mt-2">{{ loginMsg }}</p>
                   </div>
                 </div>
 
-                <div class="justify-content-center">
+                <div class="justify-content-center mt-4">
+                  <div class="row gy-2">
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                      <button class="btn btn-arijeng" type="submit">SIGN IN</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="justify-content-center mt-4">
                   <p class="text-center text-capitalize fs-5 fw-normal text-arijeng" routerLink="/reset-password">Reset Password</p>
                   <p class="text-center">Don't have Arijeng account? Click on Sign Up below.</p>
                   <p class="text-center text-uppercase text-arijeng" routerLink="/sign-up">Sign Up</p>

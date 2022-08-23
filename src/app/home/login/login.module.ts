@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Registration } from 'src/app/services/registrationServices/registration';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -13,7 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     LoginRoutingModule,
-    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule 
   ],
   providers: [
