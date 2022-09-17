@@ -26,7 +26,24 @@ export class ViewOrderComponent implements OnInit {
 
   openDialog(event: any): void {
     console.log(event);
-    this.dialog.open(ViewOrderDialog, {width: '250px'});
+    this.dialog.open(ViewOrderDialog, {
+      width: '250px',
+      data: {
+        branchCode: event.branchCode,
+        description: event.description,
+        image: event.image,
+        itemName: event.itemName,
+        orderNo: event.orderNo,
+        price: event.price,
+        quantity: event.quantity
+      }
+    });
+
+    this.dialog.afterAllClosed.subscribe(
+      result => {
+        console.log('Im closed now.');
+      }
+    )
   }
 
   public goBackHome(): void {

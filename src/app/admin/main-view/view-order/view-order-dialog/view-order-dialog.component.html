@@ -5,13 +5,13 @@
 <div mat-dialog-content>
   <mat-nav-list>
     <mat-list-item> 
-      <button mat-button color="primary">Not Placed</button> 
+      <button mat-button color="primary" (click)="orderNotPlaced()">Not Placed</button> 
     </mat-list-item>
     <mat-list-item> 
-      <button mat-button color="primary">Order Placed</button> 
+      <button mat-button color="primary" (click)="orderPlaced()">Order Placed</button> 
     </mat-list-item>
     <mat-list-item> 
-      <button mat-button color="primary">Ready For Collection</button> 
+      <button mat-button color="primary" (click)="readyForCollection()">Ready For Collection</button> 
     </mat-list-item>
  </mat-nav-list> 
 </div>
