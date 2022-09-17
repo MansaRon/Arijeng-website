@@ -5,6 +5,8 @@ import { LoginComponent } from './login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Registration } from 'src/app/services/registrationServices/registration';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from 'src/app/auth/authService.component';
+import { AuthGuardServiceGuard } from 'src/app/guards/auth-guard-service.guard';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule 
   ],
   providers: [
-    Registration
+    Registration,
+    AuthGuardServiceGuard, 
+    AuthService
   ]
 })
 export class LoginModule { }

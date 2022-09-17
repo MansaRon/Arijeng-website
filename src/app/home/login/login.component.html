@@ -50,6 +50,8 @@
                       <div *ngIf="f['password'].errors['maxlength']">Username must not exceed 40 characters</div>
                     </div>
                   </div>
+
+                  <p class="text-danger text-uppercase fs-5 mt-2">{{ errorMsg }}</p>
                 </div>
 
                 <div class="justify-content-center mt-4">

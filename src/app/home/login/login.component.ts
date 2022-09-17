@@ -16,12 +16,13 @@ export class LoginComponent implements OnInit {
     password: new FormControl('')
   });
   submitted = false;
+  errorMsg: string = '';
 
   constructor(private login: Registration, private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      mobileNum: ['', Validators.required, Validators.minLength(10), Validators.maxLength(10)],
+      mobileNum: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
       password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
     });
   }
@@ -46,11 +47,14 @@ export class LoginComponent implements OnInit {
     }
 
     this.login.loginUser(loginBody).subscribe({
-      next: (response: Login) => {
+      next: (response) => {
         console.log(response);
+        sessionStorage.setItem("loginObj", JSON.stringify(response));
+        localStorage.setItem('token', response.token);
       },
-      error: (error: Error) => {
+      error: (error) => {
         console.log(error);
+        this.errorMsg = error.error.errors[0];
       }, 
       complete:() => { this.router.navigateByUrl('/main-view') },
     })

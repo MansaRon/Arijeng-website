@@ -8,7 +8,12 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active">Log In</a>
+            <a class="nav-link active" *ngIf="isLoggedIn" (click)="logOut()">
+              <p class="fs-5 fw-bold text-color" style="cursor: pointer;">LOG OUT</p>
+            </a>
+            <a class="nav-link active" *ngIf="!isLoggedIn" (click)="logIn()">
+              <p class="fs-5 fw-bold text-color" style="cursor: pointer;">LOG IN</p>
+            </a>
           </li>
         </ul>
       </div>

@@ -76,7 +76,7 @@ export class SignUpComponent implements OnInit {
         console.log(registerResponse);
         this.router.navigateByUrl('/otp');
         console.log(this.registerForm.value);
-        localStorage.setItem("signUpObject", JSON.stringify(registerResponse));
+        sessionStorage.setItem("signUpObject", JSON.stringify(registerResponse));
       }, 
       error:(error: HttpErrorResponse) => {
         console.log(error);

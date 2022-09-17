@@ -9,7 +9,7 @@ export class Order {
     constructor(private endpoints: Endpoints, private http: HttpClient) {}
 
     public getAllOrders(): Observable<any> {
-        return this.http.get(this.endpoints.arijengurl() + "order/orders", {
+        return this.http.get<any>(this.endpoints.arijengurl() + "order/orders", {
             headers: new HttpHeaders()
                     .set("Access-Control-Allow-Headers", "Origin, Content-Type, X-Auth-Token, content-type")
                     .set("Access-Control-Allow-Origin", "*")
@@ -19,7 +19,7 @@ export class Order {
     }
 
     public updateOrderStatus(orderId: String, updateOrderDTO: OrderUpdate): Observable<any> {
-        return this.http.put(this.endpoints.arijengurl() + "order/" + orderId + "/update", updateOrderDTO, {
+        return this.http.put<OrderUpdate>(this.endpoints.arijengurl() + "order/" + orderId + "/update", updateOrderDTO, {
             headers: new HttpHeaders()
                     .set("Access-Control-Allow-Headers", "Origin, Content-Type, X-Auth-Token, content-type")
                     .set("Access-Control-Allow-Origin", "*")

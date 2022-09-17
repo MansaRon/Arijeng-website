@@ -16,6 +16,10 @@ header {
   height: 70px;
 }
 
+.text-color {
+  color: #fb5d02;
+}
+
 /* .navbar {
   background-color: #fb5d02 !important;
 } */
