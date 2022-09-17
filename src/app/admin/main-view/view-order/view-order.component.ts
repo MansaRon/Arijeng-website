@@ -29,11 +29,8 @@ export class ViewOrderComponent implements OnInit {
     this.dialog.open(ViewOrderDialog, {
       width: '250px',
       data: {
-        branchCode: event.branchCode,
+        orderID: this.kotaOrder.id,
         description: event.description,
-        image: event.image,
-        itemName: event.itemName,
-        orderNo: event.orderNo,
         price: event.price,
         quantity: event.quantity
       }

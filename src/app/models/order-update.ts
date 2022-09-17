@@ -1,5 +1,5 @@
 export interface OrderUpdate {
     description: string,
-    price: string,
+    price: number,
     quantity: number
 }
