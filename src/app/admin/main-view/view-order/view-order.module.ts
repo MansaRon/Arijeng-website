@@ -5,17 +5,21 @@ import { ViewOrderRoutingModule } from './view-order-routing.module';
 import { ViewOrderComponent } from './view-order.component';
 import { MaterialModuleModule } from 'src/material-module/material-module.module';
 import { FormsModule } from '@angular/forms';
+import { ViewOrderDialog } from './view-order-dialog/view-order-dialog.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   declarations: [
-    ViewOrderComponent
+    ViewOrderComponent,
+    ViewOrderDialog
   ],
   imports: [
     CommonModule,
     ViewOrderRoutingModule,
     MaterialModuleModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ]
 })
 export class ViewOrderModule { }

@@ -11,6 +11,7 @@ import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MaterialModuleModule } from 'src/material-module/material-module.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MaterialModuleModule } from 'src/material-module/material-module.module
     MatSliderModule,
     ReactiveFormsModule,
     // MatTableModule,
-    MaterialModuleModule
+    MaterialModuleModule,
+    HttpClientModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

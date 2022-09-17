@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Change Order Status</h1>
+<div mat-dialog-content>
+  Please select a status below to change status of order
+</div>
+<div mat-dialog-content>
+  <mat-nav-list>
+    <mat-list-item> 
+      <button mat-button color="primary">Not Placed</button> 
+    </mat-list-item>
+    <mat-list-item> 
+      <button mat-button color="primary">Order Placed</button> 
+    </mat-list-item>
+    <mat-list-item> 
+      <button mat-button color="primary">Ready For Collection</button> 
+    </mat-list-item>
+ </mat-nav-list> 
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  <button mat-raised-button color="primary" mat-dialog-close cdkFocusInitial>Change</button>
+</div>
