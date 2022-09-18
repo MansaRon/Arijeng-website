@@ -48,7 +48,9 @@ export class ViewOrderComponent implements OnInit {
     this.router.navigateByUrl('/main-view');
   }
 
-  // ENUMS for changing kota order: ORDER_PLACED, NOT_PLACED, READY_FOR_COLLECTION
+  // ENUMS for changing kota order: ORDER_PLACED,ORDER_NOT_PLACED,
+  // READY_FOR_COLLECTION,PAID_FOR_COLLECTION,
+  // COLLECTED
 
 }
 

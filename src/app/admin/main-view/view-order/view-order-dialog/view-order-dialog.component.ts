@@ -19,52 +19,92 @@ export class ViewOrderDialog implements OnInit {
     }, public service: Order ) { }
 
   ngOnInit(): void {}
-  // ENUMS for changing kota order: ORDER_PLACED, NOT_PLACED, READY_FOR_COLLECTION
+  // ENUMS for changing kota order: 
+  // ORDER_PLACED, ORDER_NOT_PLACED,
+  // READY_FOR_COLLECTION, PAID_FOR_COLLECTION,
+  // COLLECTED
 
   public orderPlaced(): any {
+    let orderStatus = "ORDER_PLACED";
     const updateOrder: OrderUpdate = {
       description: this.data.description,
       price: this.data.price,
       quantity: this.data.quantity
     }
-    console.log(this.data.orderID);
-    this.service.updateOrderStatus(this.data.orderID, updateOrder).subscribe({
+    //console.log(this.data.orderID);
+    this.service.updateOrderStatus(this.data.orderID, updateOrder, orderStatus).subscribe({
       next: (response: Response) => {
-
+        //console.log(response);
       }, error: (error: Error) => {
-
+        console.log(error);
       }, complete:() => {}
     })
   }
 
   public orderNotPlaced(): any {
+    let orderStatus = "ORDER_NOT_PLACED";
     const updateOrder: OrderUpdate = {
       description: this.data.description,
       price: this.data.price,
       quantity: this.data.quantity
     }
-    console.log(updateOrder);
-    this.service.updateOrderStatus(this.data.orderID, updateOrder).subscribe({
+    //console.log(this.data.orderID);
+    this.service.updateOrderStatus(this.data.orderID, updateOrder, orderStatus).subscribe({
       next: (response: Response) => {
-
+        //console.log(response);
       }, error: (error: Error) => {
-
+        console.log(error);
       }, complete:() => {}
     })
   }
 
   public readyForCollection(): any {
+    let orderStatus = "READY_FOR_COLLECTION";
     const updateOrder: OrderUpdate = {
       description: this.data.description,
       price: this.data.price,
       quantity: this.data.quantity
     }
-    console.log(updateOrder);
-    this.service.updateOrderStatus(this.data.orderID, updateOrder).subscribe({
+    //console.log(this.data.orderID);
+    this.service.updateOrderStatus(this.data.orderID, updateOrder, orderStatus).subscribe({
       next: (response: Response) => {
-
+        //console.log(response);
       }, error: (error: Error) => {
+        console.log(error);
+      }, complete:() => {}
+    })
+  }
 
+  public paidForCollection(): any {
+    let orderStatus = "PAID_FOR_COLLECTION";
+    const updateOrder: OrderUpdate = {
+      description: this.data.description,
+      price: this.data.price,
+      quantity: this.data.quantity
+    }
+    //console.log(this.data.orderID);
+    this.service.updateOrderStatus(this.data.orderID, updateOrder, orderStatus).subscribe({
+      next: (response: Response) => {
+        //console.log(response);
+      }, error: (error: Error) => {
+        console.log(error);
+      }, complete:() => {}
+    })
+  }
+
+  public collection(): any {
+    let orderStatus = "COLLECTED";
+    const updateOrder: OrderUpdate = {
+      description: this.data.description,
+      price: this.data.price,
+      quantity: this.data.quantity
+    }
+    //console.log(this.data.orderID);
+    this.service.updateOrderStatus(this.data.orderID, updateOrder, orderStatus).subscribe({
+      next: (response: Response) => {
+        //console.log(response);
+      }, error: (error: Error) => {
+        console.log(error);
       }, complete:() => {}
     })
   }

@@ -18,8 +18,8 @@ export class Order {
         }) 
     }
 
-    public updateOrderStatus(orderId: String, updateOrderDTO: OrderUpdate): Observable<any> {
-        return this.http.put<OrderUpdate>(this.endpoints.arijengurl() + "order/" + orderId + "/update", updateOrderDTO, {
+    public updateOrderStatus(orderId: String, updateOrderDTO: OrderUpdate, orderStatus: String): Observable<any> {
+        return this.http.put<OrderUpdate>(this.endpoints.arijengurl() + "order/" + orderId + "/status/" + orderStatus + "/update", updateOrderDTO, {
             headers: new HttpHeaders()
                     .set("Access-Control-Allow-Headers", "Origin, Content-Type, X-Auth-Token, content-type")
                     .set("Access-Control-Allow-Origin", "*")

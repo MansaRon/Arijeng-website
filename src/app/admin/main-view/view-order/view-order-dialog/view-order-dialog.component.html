@@ -3,17 +3,13 @@
   Please select a status below to change status of order
 </div>
 <div mat-dialog-content>
-  <mat-nav-list>
-    <mat-list-item> 
-      <button mat-button color="primary" (click)="orderNotPlaced()">Not Placed</button> 
-    </mat-list-item>
-    <mat-list-item> 
-      <button mat-button color="primary" (click)="orderPlaced()">Order Placed</button> 
-    </mat-list-item>
-    <mat-list-item> 
-      <button mat-button color="primary" (click)="readyForCollection()">Ready For Collection</button> 
-    </mat-list-item>
- </mat-nav-list> 
+  <div class="col-md-12">
+    <button mat-button color="primary" (click)="orderNotPlaced()">Not Placed</button> 
+    <button mat-button color="primary" (click)="orderPlaced()">Order Placed</button> 
+    <button mat-button color="primary" (click)="readyForCollection()">Ready For Collection</button> 
+    <button mat-button color="primary" (click)="paidForCollection()">Paid For Collection</button> 
+    <button mat-button color="primary" (click)="collection()">Collection</button> 
+  </div>
 </div>
 <div mat-dialog-actions>
   <button mat-raised-button color="warn" mat-dialog-close>Close</button>
