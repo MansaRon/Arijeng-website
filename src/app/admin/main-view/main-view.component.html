@@ -1,79 +1,46 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-2 removeSpace">
-          <app-sidebar (onToggleSideNav)="onToggleSideNav($event)"></app-sidebar>
-        </div>
-        <div class="col-md-10">
-
-          <table class="table table-striped table-hover">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Phone Number</th>
-                <th scope="col">Status</th>
-                <th scope="col">Order Number</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let order of orders; let i = index">
-                <th>{{ i + 1}}</th>
-                <td>{{ order.person.name }}</td>
-                <td>{{ order.person.email }}</td>
-                <td>{{ order.person.phone }}</td>
-                <td>{{ order.status }}</td>
-                <td>{{ order.orderNumber }}</td>
-                <td> 
-                  <button (click)="FunctionEdit(order)" mat-raised-button color="primary">View</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
-          <!-- <mat-form-field appearance="standard">
-            <mat-label>Filter</mat-label>
-            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
-          </mat-form-field> -->
-
-            <!-- <div class="mat-elevation-z8">    
-
-                <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
-                    <ng-container matColumnDef="position">
-                      <th mat-header-cell *matHeaderCellDef mat-sort-header>No.</th>
-                      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-                    </ng-container>
-                  
-                    <ng-container matColumnDef="name">
-                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-                      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-                    </ng-container>
-                  
-                    <ng-container matColumnDef="weight">
-                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Weight</th>
-                      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-                    </ng-container>
-                  
-                    <ng-container matColumnDef="symbol">
-                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Symbol</th>
-                      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-                    </ng-container>
-
-                    <ng-container matColumnDef="action">
-                        <th mat-header-cell *matHeaderCellDef> Action </th>
-                        <td mat-cell *matCellDef="let element"> 
-                          <button (click)="FunctionEdit(element)" mat-raised-button color="primary">View</button>
-                        </td>
-                    </ng-container>
-                    
-                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                    <tr mat-row matRipple *matRowDef="let row; columns: displayedColumns;"></tr>
-                </table>
-        
-                <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 15]" aria-label="Select Page"></mat-paginator>
-  
-            </div> -->
-              
-        </div>
+  <div class="row">
+    <div class="col-md-12">
+      <!-- <form role="form" [formGroup]="filterForm" autocomplete="off"> -->
+      <form role="form" autocomplete="off">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Search Order</mat-label>
+          <!-- <input type="text" matInput formControlName="searchOrder" placeholder="Ex. pat@example.com"> -->
+          <input type="text" matInput name="search" [(ngModel)]="searchOrder" placeholder="Ex. pat@example.com">
+        </mat-form-field>
+      </form>
     </div>
+  </div>
+  <div class="row">
+    <!-- <div class="col-md-2 removeSpace">
+          <app-sidebar (onToggleSideNav)="onToggleSideNav($event)"></app-sidebar>
+        </div> -->
+    <div class="col-md-12">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Status</th>
+            <th scope="col">Order Number</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders | orderfilter: searchOrder; let i = index">
+            <th>{{ i + 1 }}</th>
+            <td>{{ order.person.name }}</td>
+            <td>{{ order.person.email }}</td>
+            <td>{{ order.person.phone }}</td>
+            <td>{{ order.status }}</td>
+            <td>{{ order.orderNumber }}</td>
+            <td>
+              <button (click)="viewOrder(order)" mat-raised-button color="primary">View</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

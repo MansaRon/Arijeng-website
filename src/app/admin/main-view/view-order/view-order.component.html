@@ -16,6 +16,7 @@
                 <mat-card-subtitle>{{ kotaOrder.person.name }}</mat-card-subtitle>
                 <mat-card-subtitle>{{ kotaOrder.person.email }}</mat-card-subtitle>
                 <mat-card-content>Orders: <b>{{ kotaOrder.orders.length }}</b></mat-card-content>
+                <mat-card-content>Order Number: <b>{{ kotaOrder.orderNumber }}</b></mat-card-content>
                 <mat-card-content>Total Price: <b>{{ totalPrice | currency: "R" }}</b>  </mat-card-content>
                 <mat-card-content>
                     <mat-accordion>
@@ -33,6 +34,7 @@
                                     <a mat-list-item *ngFor="let orders of kotaOrder.orders; 
                                         let i = index" (click)="openDialog(orders)"> 
                                         {{ orders.price | currency: "R" }}, 
+                                        {{ orders.itemName }},
                                         {{ orders.description }}, 
                                         {{ orders.quantity }} item 
                                         <mat-divider></mat-divider>
