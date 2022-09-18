@@ -1,20 +1,25 @@
+<ngx-spinner 
+  bdColor="rgba(0, 0, 0, 0.8)" 
+  size="large" 
+  color="#fb5d02" 
+  type="pacman" 
+  [fullScreen]="true" >
+  <p style="color: white" > Loading... </p>
+</ngx-spinner>
+
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
-      <!-- <form role="form" [formGroup]="filterForm" autocomplete="off"> -->
       <form role="form" autocomplete="off">
         <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Search Order</mat-label>
-          <!-- <input type="text" matInput formControlName="searchOrder" placeholder="Ex. pat@example.com"> -->
+          <mat-label>Search Order (eg ARJ00001...)</mat-label>
           <input type="text" matInput name="search" [(ngModel)]="searchOrder" placeholder="Ex. pat@example.com">
         </mat-form-field>
       </form>
     </div>
   </div>
   <div class="row">
-    <!-- <div class="col-md-2 removeSpace">
-          <app-sidebar (onToggleSideNav)="onToggleSideNav($event)"></app-sidebar>
-        </div> -->
     <div class="col-md-12">
       <table class="table table-striped table-hover">
         <thead>

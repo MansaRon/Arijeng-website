@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MainViewRoutingModule } from './main-view-routing.module';
 import { MainViewComponent } from './main-view.component';
@@ -9,6 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModuleModule } from 'src/material-module/material-module.module';
 import { HttpClientModule } from '@angular/common/http';
 import { OrderfilterPipe } from 'src/app/pipes/orderfilter.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,10 @@ import { OrderfilterPipe } from 'src/app/pipes/orderfilter.pipe';
     // MatTableModule,
     MaterialModuleModule,
     HttpClientModule,
-    FormsModule
-  ]
+    FormsModule,
+    // BrowserAnimationsModule,
+    NgxSpinnerModule,
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class MainViewModule { }

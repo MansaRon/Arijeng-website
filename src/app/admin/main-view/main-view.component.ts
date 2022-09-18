@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { tap } from 'rxjs';
 import { Order } from 'src/app/services/orderServices/order';
 
 @Component({
@@ -12,17 +14,12 @@ export class MainViewComponent implements OnInit {
 
   orders: any = [];
   searchOrder: string = '';
-  // filterForm: FormGroup = new FormGroup({
-  //   searchOrder: new FormControl('')
-  // });
 
-  constructor(private adminService: Order, private router: Router, private formBuilder: FormBuilder) {}
+  constructor(private adminService: Order, private router: Router, private spinner: NgxSpinnerService) {}
 
   ngOnInit(): void {
-    this.getAllOrders();
-    // this.filterForm = this.formBuilder.group({
-    //   searchOrder: ['', [Validators.required]]
-    // });
+    this.getAllOrders(); 
+    this.spinner.show();
   }
 
   viewOrder(code: any) {
@@ -37,6 +34,7 @@ export class MainViewComponent implements OnInit {
       next:(response: Response) => {
         this.orders = response;
         console.log(this.orders);
+        this.spinner.hide();
       },
       error:(error: Error) => {
         console.log(error);
