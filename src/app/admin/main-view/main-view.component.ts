@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { tap } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { Order } from 'src/app/services/orderServices/order';
 
 @Component({
@@ -10,16 +10,22 @@ import { Order } from 'src/app/services/orderServices/order';
   templateUrl: './main-view.component.html',
   styleUrls: ['./main-view.component.css']
 })
-export class MainViewComponent implements OnInit {
+export class MainViewComponent implements OnInit, OnDestroy {
 
   orders: any = [];
   searchOrder: string = '';
-
+  destroy$: Subject<boolean> = new Subject<boolean>();
+  
   constructor(private adminService: Order, private router: Router, private spinner: NgxSpinnerService) {}
 
   ngOnInit(): void {
     this.getAllOrders(); 
     this.spinner.show();
+  }
+ 
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
   }
 
   viewOrder(code: any) {
@@ -30,7 +36,7 @@ export class MainViewComponent implements OnInit {
 
   public getAllOrders(): void {
     console.log('Loading...');
-    this.adminService.getAllOrders().subscribe({
+    this.adminService.getAllOrders().pipe(takeUntil(this.destroy$)).subscribe({
       next:(response: Response) => {
         this.orders = response;
         console.log(this.orders);

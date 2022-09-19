@@ -33,7 +33,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let order of orders | orderfilter: searchOrder; let i = index">
+          <tr *ngFor="let order of orders | orderfilter: searchOrder; let i = index;">
             <th>{{ i + 1 }}</th>
             <td>{{ order.person.name }}</td>
             <td>{{ order.person.email }}</td>
