@@ -13,26 +13,28 @@ export class ViewOrderComponent implements OnInit {
   kotaOrder: any;
   panelOpenState = false;
   totalPrice: number = 0;
+  kotaOrderStatus: string = '';
   
   constructor(private router: Router, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.kotaOrder = JSON.parse(localStorage.getItem("kotaOrder") || '');
-    console.log(this.kotaOrder);
+    // This expression removes all the characters specified inside the string
+    this.kotaOrderStatus = this.kotaOrder.status.replace(/_/g, ' ');
     this.kotaOrder.orders.forEach((element: any) => {
       this.totalPrice += element.price;
     });
   }
 
   openDialog(event: any): void {
-    console.log(event);
     this.dialog.open(ViewOrderDialog, {
       width: '250px',
       data: {
         orderID: this.kotaOrder.id,
         description: event.description,
         price: event.price,
-        quantity: event.quantity
+        quantity: event.quantity,
+        status: event.status
       }
     });
 

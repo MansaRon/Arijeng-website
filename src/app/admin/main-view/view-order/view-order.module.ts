@@ -7,6 +7,7 @@ import { MaterialModuleModule } from 'src/material-module/material-module.module
 import { FormsModule } from '@angular/forms';
 import { ViewOrderDialog } from './view-order-dialog/view-order-dialog.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     ViewOrderRoutingModule,
     MaterialModuleModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule
   ]
 })
 export class ViewOrderModule { }

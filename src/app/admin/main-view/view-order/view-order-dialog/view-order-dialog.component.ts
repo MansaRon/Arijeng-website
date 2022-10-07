@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { NgxSpinnerService } from "ngx-spinner";
 import { OrderUpdate } from 'src/app/models/order-update';
 import { Order } from "src/app/services/orderServices/order";
 
@@ -9,14 +10,15 @@ import { Order } from "src/app/services/orderServices/order";
 })
 export class ViewOrderDialog implements OnInit {
 
-  order_status: any;
+  order_status_success: string = '';
+  order_status_failure: string = '';
   constructor(public dialogRef: MatDialogRef<ViewOrderDialog>, public order: Order,
     @Inject(MAT_DIALOG_DATA) public data: {
       orderID: string,
       description: string,
       price: number,
       quantity: number
-    }, public service: Order ) { }
+    }, public service: Order, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {}
   // ENUMS for changing kota order: 
@@ -31,13 +33,15 @@ export class ViewOrderDialog implements OnInit {
       price: this.data.price,
       quantity: this.data.quantity
     }
-    //console.log(this.data.orderID);
+    this.spinner.show();
     this.service.updateOrderStatus(this.data.orderID, updateOrder, orderStatus).subscribe({
       next: (response: Response) => {
-        //console.log(response);
-      }, error: (error: Error) => {
+        console.log(response);
+      }, error: (error) => {
         console.log(error);
-      }, complete:() => {}
+        this.order_status_failure = error.error.errors[0];
+        this.spinner.hide();
+      }, complete:() => {this.spinner.hide(); this.order_status_success = 'Order status changed.'}
     })
   }
 
@@ -48,13 +52,15 @@ export class ViewOrderDialog implements OnInit {
       price: this.data.price,
       quantity: this.data.quantity
     }
-    //console.log(this.data.orderID);
+    this.spinner.show();
     this.service.updateOrderStatus(this.data.orderID, updateOrder, orderStatus).subscribe({
       next: (response: Response) => {
-        //console.log(response);
-      }, error: (error: Error) => {
+        console.log(response);
+      }, error: (error) => {
         console.log(error);
-      }, complete:() => {}
+        this.order_status_failure = error.error.errors[0];
+        this.spinner.hide();
+      }, complete:() => {this.spinner.hide(); this.order_status_success = 'Order status changed.'}
     })
   }
 
@@ -65,13 +71,14 @@ export class ViewOrderDialog implements OnInit {
       price: this.data.price,
       quantity: this.data.quantity
     }
-    //console.log(this.data.orderID);
+    this.spinner.show();
     this.service.updateOrderStatus(this.data.orderID, updateOrder, orderStatus).subscribe({
       next: (response: Response) => {
-        //console.log(response);
-      }, error: (error: Error) => {
+      }, error: (error) => {
         console.log(error);
-      }, complete:() => {}
+        this.order_status_failure = error.error.errors[0];
+        this.spinner.hide();
+      }, complete:() => {this.spinner.hide(); this.order_status_success = 'Order status changed.'}
     })
   }
 
@@ -82,13 +89,14 @@ export class ViewOrderDialog implements OnInit {
       price: this.data.price,
       quantity: this.data.quantity
     }
-    //console.log(this.data.orderID);
+    this.spinner.show();
     this.service.updateOrderStatus(this.data.orderID, updateOrder, orderStatus).subscribe({
       next: (response: Response) => {
-        //console.log(response);
-      }, error: (error: Error) => {
+      }, error: (error) => {
         console.log(error);
-      }, complete:() => {}
+        this.order_status_failure = error.error.errors[0];
+        this.spinner.hide();
+      }, complete:() => {this.spinner.hide(); this.order_status_success = 'Order status changed.'}
     })
   }
 
@@ -99,13 +107,14 @@ export class ViewOrderDialog implements OnInit {
       price: this.data.price,
       quantity: this.data.quantity
     }
-    //console.log(this.data.orderID);
+    this.spinner.show();
     this.service.updateOrderStatus(this.data.orderID, updateOrder, orderStatus).subscribe({
       next: (response: Response) => {
-        //console.log(response);
-      }, error: (error: Error) => {
+      }, error: (error) => {
         console.log(error);
-      }, complete:() => {}
+        this.order_status_failure = error.error.errors[0];
+        this.spinner.hide();
+      }, complete:() => {this.spinner.hide(); this.order_status_success = 'Order status changed.'}
     })
   }
 

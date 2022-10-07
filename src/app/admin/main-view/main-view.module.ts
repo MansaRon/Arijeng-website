@@ -11,13 +11,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { OrderfilterPipe } from 'src/app/pipes/orderfilter.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { HeaderComponent } from 'src/app/header/header.component';
 
 @NgModule({
   declarations: [
     MainViewComponent, 
     // OrdersComponent,
     SidebarComponent,
-    OrderfilterPipe
+    OrderfilterPipe,
+    HeaderComponent,
   ],
   imports: [
     CommonModule,

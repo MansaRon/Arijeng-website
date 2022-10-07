@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Subject, takeUntil } from 'rxjs';
@@ -29,17 +28,14 @@ export class MainViewComponent implements OnInit, OnDestroy {
   }
 
   viewOrder(code: any) {
-    //console.log(code);
     localStorage.setItem("kotaOrder", JSON.stringify(code));
     this.router.navigateByUrl('/view-order')
   }
 
   public getAllOrders(): void {
-    console.log('Loading...');
     this.adminService.getAllOrders().pipe(takeUntil(this.destroy$)).subscribe({
       next:(response: Response) => {
         this.orders = response;
-        console.log(this.orders);
         this.spinner.hide();
       },
       error:(error: Error) => {

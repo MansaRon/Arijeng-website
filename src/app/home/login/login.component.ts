@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { Registration } from 'src/app/services/registrationServices/registration';
 import { Login } from "src/app/models/login";
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   errorMsg: string = '';
 
-  constructor(private login: Registration, private router: Router, private formBuilder: FormBuilder) { }
+  constructor(private spinner: NgxSpinnerService, private login: Registration, private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -45,7 +46,7 @@ export class LoginComponent implements OnInit {
       "phone": this.loginForm.value.mobileNum,
       "pwd": this.loginForm.value.password
     }
-
+    this.spinner.show();
     this.login.loginUser(loginBody).subscribe({
       next: (response) => {
         console.log(response);
@@ -56,7 +57,7 @@ export class LoginComponent implements OnInit {
         console.log(error);
         this.errorMsg = error.error.errors[0];
       }, 
-      complete:() => { this.router.navigateByUrl('/main-view') },
+      complete:() => { this.router.navigateByUrl('/main-view'), this.spinner.hide(); },
     })
   }
 

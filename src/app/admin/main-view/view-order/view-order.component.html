@@ -15,8 +15,9 @@
                 <mat-card-title>Order/Customer Details:</mat-card-title>
                 <mat-card-subtitle>{{ kotaOrder.person.name }}</mat-card-subtitle>
                 <mat-card-subtitle>{{ kotaOrder.person.email }}</mat-card-subtitle>
-                <mat-card-content>Orders: <b>{{ kotaOrder.orders.length }}</b></mat-card-content>
                 <mat-card-content>Order Number: <b>{{ kotaOrder.orderNumber }}</b></mat-card-content>
+                <mat-card-content>Order Status: <b>{{ kotaOrderStatus }}</b>  </mat-card-content>
+                <mat-card-content>Total Orders: <b>{{ kotaOrder.orders.length }}</b></mat-card-content>
                 <mat-card-content>Total Price: <b>{{ totalPrice | currency: "R" }}</b>  </mat-card-content>
                 <mat-card-content>
                     <mat-accordion>
@@ -39,18 +40,11 @@
                                         {{ orders.quantity }} item 
                                         <mat-divider></mat-divider>
                                     </a>
-                                 </mat-nav-list>                        
+                                 </mat-nav-list>
                             </ng-template>
-                            
                         </mat-expansion-panel>
                     </mat-accordion>
                 </mat-card-content>
-
-                <!-- <mat-card-actions align="end">
-                    <button mat-raised-button color="primary">Order Placed</button>
-                    <button mat-raised-button color="accent">Not Placed</button>
-                    <button mat-raised-button color="warn">Ready For Collection</button>
-                </mat-card-actions> -->
             </mat-card>
         </div>
     </div>

@@ -1,7 +1,9 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="large" color="#fb5d02" type="pacman" [fullScreen]="true" >
+  <p style="color: white" >Changing Order Status...</p>
+</ngx-spinner>
+
 <h1 mat-dialog-title>Change Order Status</h1>
-<div mat-dialog-content>
-  Please select a status below to change status of order
-</div>
+<div mat-dialog-content>Please select a status below to change status of order</div>
 <div mat-dialog-content>
   <div class="col-md-12">
     <button mat-button color="primary" (click)="orderNotPlaced()">Not Placed</button> 
@@ -12,6 +14,11 @@
   </div>
 </div>
 <div mat-dialog-actions>
-  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
-  <button mat-raised-button color="primary" mat-dialog-close cdkFocusInitial>Change</button>
+  <div class="col-md-12 text-center">
+    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  </div>
+</div>
+<div mat-dialog-content>
+  <p class="text-success fs-5 mt-4">{{ order_status_success }}</p>
+  <p class="text-danger fs-5 mt-4">{{ order_status_failure }}</p>
 </div>

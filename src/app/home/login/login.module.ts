@@ -7,6 +7,7 @@ import { Registration } from 'src/app/services/registrationServices/registration
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from 'src/app/auth/authService.component';
 import { AuthGuardServiceGuard } from 'src/app/guards/auth-guard-service.guard';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AuthGuardServiceGuard } from 'src/app/guards/auth-guard-service.guard';
     CommonModule,
     LoginRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule 
+    HttpClientModule,
+    NgxSpinnerModule
   ],
   providers: [
     Registration,
