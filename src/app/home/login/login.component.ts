@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Registration } from 'src/app/services/registrationServices/registration';
-import { Login } from "src/app/models/login";
 import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
@@ -49,7 +48,6 @@ export class LoginComponent implements OnInit {
     this.spinner.show();
     this.login.loginUser(loginBody).subscribe({
       next: (response) => {
-        console.log(response);
         sessionStorage.setItem("loginObj", JSON.stringify(response));
         localStorage.setItem('token', response.token);
       },

@@ -41,7 +41,7 @@ export class OptComponent implements OnInit {
 
     this.register.confirmOTP(this.signUpObject.phone).subscribe({
       next: (opt: Response) => {
-        console.log(opt);
+
       },
       error: (error) => {
         console.log(error);

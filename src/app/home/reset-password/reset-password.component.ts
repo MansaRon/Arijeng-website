@@ -46,7 +46,6 @@ export class ResetPasswordComponent implements OnInit {
 
     this.register.resetPassword(resetPwdBody).subscribe({
       next(resetPwd: ResetPassword) {
-        console.log(resetPwd);
       },
       error(err: Error) {
         console.log(err);

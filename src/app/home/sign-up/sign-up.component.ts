@@ -30,7 +30,6 @@ export class SignUpComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       firstName: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
       lastName: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
-      // dob: ['', [Validators.required, Validators.pattern(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/)]],
       email: ['', [Validators.required, Validators.email]],
       mobileNum: ['', Validators.required, Validators.minLength(10), Validators.maxLength(10)],
       password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
@@ -57,25 +56,17 @@ export class SignUpComponent implements OnInit {
     this.submitted = true;
     if (this.registerForm.invalid) { return; }
 
-    console.log(this.registerForm.value);
-
     const registerBody = {
       "firstName": this.registerForm.value.firstName,
       "lastName": this.registerForm.value.lastName,
       "email": this.registerForm.value.email,
       "phone": this.registerForm.value.mobileNum,
-      // "code": "string",
       "pwd": this.registerForm.value.password
     }
 
-    // display form values on success
-    //alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
-
     this.register.registerUser(registerBody).subscribe({
       next: (registerResponse: Register) => {
-        console.log(registerResponse);
         this.router.navigateByUrl('/otp');
-        console.log(this.registerForm.value);
         sessionStorage.setItem("signUpObject", JSON.stringify(registerResponse));
       }, 
       error:(error: HttpErrorResponse) => {
