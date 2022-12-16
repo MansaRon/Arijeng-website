@@ -43,6 +43,7 @@ export class MainViewComponent implements OnInit, OnDestroy {
       },
       error:(error: Error) => {
         console.log(error);
+        this.spinner.hide();
       }, 
       complete:() => {}
     })
