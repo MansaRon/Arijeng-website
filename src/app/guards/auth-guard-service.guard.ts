@@ -12,7 +12,6 @@ export class AuthGuardServiceGuard implements CanActivate, CanActivateChild {
 
   canActivateChild(): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     if (!this.auth.isAuthenticated()) {
-      console.log('bye');
       this.router.navigate(['/']);
       return false;
     }
@@ -21,7 +20,6 @@ export class AuthGuardServiceGuard implements CanActivate, CanActivateChild {
 
   canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (!this.auth.isAuthenticated()) {
-      console.log('bye');
       this.router.navigate(['/']);
       return false;
     }

@@ -16,7 +16,6 @@ import { HeaderComponent } from 'src/app/header/header.component';
 @NgModule({
   declarations: [
     MainViewComponent, 
-    // OrdersComponent,
     SidebarComponent,
     OrderfilterPipe,
     HeaderComponent,
@@ -26,11 +25,9 @@ import { HeaderComponent } from 'src/app/header/header.component';
     MainViewRoutingModule,
     MatSliderModule,
     ReactiveFormsModule,
-    // MatTableModule,
     MaterialModuleModule,
     HttpClientModule,
     FormsModule,
-    // BrowserAnimationsModule,
     NgxSpinnerModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

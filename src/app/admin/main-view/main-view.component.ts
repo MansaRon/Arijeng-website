@@ -14,12 +14,15 @@ export class MainViewComponent implements OnInit, OnDestroy {
   orders: any = [];
   searchOrder: string = '';
   destroy$: Subject<boolean> = new Subject<boolean>();
+  token: string | null = '';
   
   constructor(private adminService: Order, private router: Router, private spinner: NgxSpinnerService) {}
 
   ngOnInit(): void {
     this.getAllOrders(); 
     this.spinner.show();
+    this.token = localStorage.getItem('token');
+    console.log(this.token);
   }
  
   ngOnDestroy(): void {
@@ -33,7 +36,7 @@ export class MainViewComponent implements OnInit, OnDestroy {
   }
 
   public getAllOrders(): void {
-    this.adminService.getAllOrders().pipe(takeUntil(this.destroy$)).subscribe({
+    this.adminService.getAllOrders(this.token).pipe(takeUntil(this.destroy$)).subscribe({
       next:(response: Response) => {
         this.orders = response;
         this.spinner.hide();

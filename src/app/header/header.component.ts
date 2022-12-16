@@ -18,7 +18,6 @@ export class HeaderComponent implements OnInit {
 
   public checkLoggedIn(): void {
     if (localStorage.getItem('token') !== null) {
-      //this.loggedDisplay = "LOG OUT";
       this.isLoggedIn = true;
     }
   }
@@ -28,7 +27,6 @@ export class HeaderComponent implements OnInit {
   }
 
   public logOut(): void {
-    //this.loggedDisplay = "LOG IN";
     this.isLoggedIn = false;
     sessionStorage.removeItem('loginObj');
     localStorage.removeItem('token');

@@ -8,13 +8,15 @@ import { Endpoints } from "../urlServices/endpoints";
 export class Order {
     constructor(private endpoints: Endpoints, private http: HttpClient) {}
 
-    public getAllOrders(): Observable<any> {
+    public getAllOrders(adminToken: string | null): Observable<any> {
+        const token = " Bearer " + adminToken; 
         return this.http.get<any>(this.endpoints.arijengurl() + "order/orders", {
             headers: new HttpHeaders()
                     .set("Access-Control-Allow-Headers", "Origin, Content-Type, X-Auth-Token, content-type")
                     .set("Access-Control-Allow-Origin", "*")
                     .set("Accept", 'application/json')
                     .set('Content-Type', 'application/json')
+                    .set('Authorization', token)
         }) 
     }
 
